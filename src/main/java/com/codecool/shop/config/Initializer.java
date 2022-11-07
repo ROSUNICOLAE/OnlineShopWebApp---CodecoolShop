@@ -29,12 +29,18 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(amazon);
         Supplier lenovo = new Supplier("Lenovo", "Computers");
         supplierDataStore.add(lenovo);
+        Supplier apple = new Supplier("Apple", "Phones");
+        supplierDataStore.add(apple);
 
         //setting up a new product category
-        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
-        ProductCategory ctg2 = new ProductCategory("ctg2", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
+        ProductCategory tablet = new ProductCategory("Tablet", "Hardware",
+                "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a " +
+                        "touchscreen display.");
         productCategoryDataStore.add(tablet);
+        ProductCategory ctg2 = new ProductCategory("ctg2", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
         productCategoryDataStore.add(ctg2);
+        ProductCategory phones = new ProductCategory("Phones", "", "Smart phones");
+        productCategoryDataStore.add(phones);
 
         //setting up products and printing it
         productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon));
@@ -44,5 +50,6 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("Amazonn Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", ctg2, amazon));
         productDataStore.add(new Product("Lenovoo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", ctg2, lenovo));
         productDataStore.add(new Product("Amazonn Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", ctg2, amazon));
+        productDataStore.add(new Product("Telefon mobil Apple iPhone 11, 64GB, Red", new BigDecimal("2"), "EUR", "New system with two cameras. Battery for the whole day. The most durable glass ever used in a smartphone. Apple's fastest processor ever.", phones, apple));
     }
 }
