@@ -33,6 +33,7 @@ public class ProductController extends HttpServlet {
         context.setVariable("category2", productService.getProductCategory(2));
         context.setVariable("products", productService.getProductsForCategory(1));
         context.setVariable("productCategoryDataStore", productService.getProductCategories());
+        context.setVariable("products", productService.getAllProducts());
 
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
