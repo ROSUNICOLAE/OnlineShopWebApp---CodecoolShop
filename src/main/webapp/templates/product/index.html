@@ -12,24 +12,53 @@
 
 <nav th:replace="header.html :: navigation"></nav>
 
-<div class="container">
-
-    <div class="card d-flex justify-content-between flex-row">
-        <select name="categories" id="categories">
-            <option th:each="category : ${categories}"
-                    th:text="${category.name}"
-                    th:value="${category.id}"
-                    th:data-category="${category.id}">
-            </option>
-        </select>
-        <select name="suppliers" id="suppliers">
-            <option th:each="supplier : ${suppliers}"
-                    th:text="${supplier.name}"
-                    th:value="${supplier.id}"
-                    th:data-supplier="${supplier.id}">
-            </option>
-        </select>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">All Products</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <select name="categories" id="categories">
+                        <option th:each="category : ${categories}"
+                                th:text="${category.name}"
+                                th:value="${category.id}"
+                                th:data-category="${category.id}">
+                        </option>
+                    </select>
+                </li>
+                <li class="nav-item">
+                    <select name="suppliers" id="suppliers">
+                        <option th:each="supplier : ${suppliers}"
+                                th:text="${supplier.name}"
+                                th:value="${supplier.id}"
+                                th:data-supplier="${supplier.id}">
+                        </option>
+                    </select>
+            </ul>
+        </div>
     </div>
+</nav>
+
+<!--<div class="container">-->
+<!--    <div class="card d-flex justify-content-between flex-row">-->
+<!--        <select name="categories" id="categories">-->
+<!--            <option th:each="category : ${categories}"-->
+<!--                    th:text="${category.name}"-->
+<!--                    th:value="${category.id}"-->
+<!--                    th:data-category="${category.id}">-->
+<!--            </option>-->
+<!--        </select>-->
+<!--        <select name="suppliers" id="suppliers">-->
+<!--            <option th:each="supplier : ${suppliers}"-->
+<!--                    th:text="${supplier.name}"-->
+<!--                    th:value="${supplier.id}"-->
+<!--                    th:data-supplier="${supplier.id}">-->
+<!--            </option>-->
+<!--        </select>-->
+<!--    </div>-->
 
     <div id="products" class="container index-items-container">
         <div th:each="prod,iterStat : ${products}">
