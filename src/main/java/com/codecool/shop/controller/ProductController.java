@@ -27,24 +27,22 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
-        SupplierDao supplierDao = SupplierDaoMem.getInstance();
+        SupplierDao supplierDao= SupplierDaoMem.getInstance();
         ProductService productService = new ProductService(productDataStore,productCategoryDataStore, supplierDao);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("suppliers", productService.getSupplierDao().getAll());
+        context.setVariable("suppliers", supplierDao.getAll());
+        context.setVariable("categories", productCategoryDataStore.getAll());
 
-        context.setVariable("categories", productService.getProductCategoryDao().getAll());
-
-
+        context.setVariable("category", productService.getProductCategory(1));
         context.setVariable("products", productService.getAllProducts());
-
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
         // params.put("category", productCategoryDataStore.find(1));
         // params.put("products", productDataStore.getBy(productCategoryDataStore.find(1)));
         // context.setVariables(params);
-        engine.process("index.html", context, resp.getWriter());
+        engine.process("product/index.html", context, resp.getWriter());
     }
 
 }

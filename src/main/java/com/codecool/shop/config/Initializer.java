@@ -3,11 +3,14 @@ package com.codecool.shop.config;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
+import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.dao.implementation.ProductCategoryDaoMem;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
 import com.codecool.shop.dao.implementation.SupplierDaoMem;
+import com.codecool.shop.dao.implementation.UserDaoMem;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
+import com.codecool.shop.model.Role;
 import com.codecool.shop.model.Supplier;
 
 import javax.servlet.ServletContextEvent;
@@ -23,36 +26,26 @@ public class Initializer implements ServletContextListener {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
+        UserDao userDaoStore= UserDaoMem.getInstance();
 
         //setting up a new supplier
-        Supplier amazon = new Supplier("Amazon", "Digital content and services");
+        Supplier amazon = new Supplier("Amazon");
         supplierDataStore.add(amazon);
-        Supplier lenovo = new Supplier("Lenovo", "Laptop");
+        Supplier lenovo = new Supplier("Lenovo");
         supplierDataStore.add(lenovo);
-        Supplier apple = new Supplier("Apple", "Phones");
-        supplierDataStore.add(apple);
-        Supplier hp = new Supplier("HP", "Laptop");
-        supplierDataStore.add(hp);
-        Supplier samsung = new Supplier("Samsung", "Tablet");
-        supplierDataStore.add(samsung);
-
 
         //setting up a new product category
-        ProductCategory tablet = new ProductCategory("Tablet", "Hardware",
-                "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a " +
-                        "touchscreen display.");
+        ProductCategory tablet = new ProductCategory("Tablet", "Hardware", "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display.");
         productCategoryDataStore.add(tablet);
-        ProductCategory phone = new ProductCategory("Phones", "", "Smart phones");
-        productCategoryDataStore.add(phone);
-        ProductCategory laptop = new ProductCategory("Laptop", "", "Laptop");
+        ProductCategory laptop = new ProductCategory("Laptop","Hardware","Sisteme de calcul avansate portabile");
         productCategoryDataStore.add(laptop);
-
         //setting up products and printing it
-        productDataStore.add(new Product("Telefon mobil Apple iPhone 11, 64GB, Red", new BigDecimal("2"), "EUR", "New system with two cameras. Battery for the whole day. The most durable glass ever used in a smartphone. Apple's fastest processor ever.", phone, apple));
-        productDataStore.add(new Product("Tableta SAMSUNG Galaxy Tab S8", new BigDecimal("5"), "EUR", "Laptop HP Pavilion Aero 13-be0031nq, AMD Ryzen 5, 13.3\"," +
-                " Tableta SAMSUNG Galaxy Tab S8, 11\", 128GB, 8GB RAM, Wi-Fi, Gray", tablet, samsung));
-        productDataStore.add(new Product("Laptop HP Pavilion Aero 13", new BigDecimal("24"), "EUR", "Laptop HP Pavilion Aero 13-be0031nq, AMD Ryzen 5, 13.3\"," +
-                " WUXGA IPS, 16GB, SSD 512GB, AMD Radeon Graphics, Windows 11 Home, Pale Rose Gold", laptop, hp));
-
+        productDataStore.add(new Product("Amazon Fire", new BigDecimal("49.9"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", tablet, amazon, "/static/img/product_1.jpg"));
+        productDataStore.add(new Product("Lenovo IdeaPad Miix 700", new BigDecimal("479"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", tablet, lenovo, "/static/img/product_2.jpg"));
+        productDataStore.add(new Product("Amazon Fire HD 8", new BigDecimal("89"), "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", tablet, amazon, "/static/img/product_3.jpg"));
+        productDataStore.add(new Product("MacBook Noob",new BigDecimal("1200"),"USD","Laptop pt Robert wannabee s",laptop,amazon,"https://lcdn.altex.ro/resize/media/catalog/product/M/a/2bd48d28d1c32adea0e55139a4e6434a/MacBook_Pro_13in_Silver-1.jpg"));
+        productDataStore.add(new Product("Lenovo",new BigDecimal("1000"),"USD","Laptopul praf al lui Dragos",laptop,amazon,"https://cdn.pocket-lint.com/r/s/1200x/assets/images/135517-laptops-review-lenovo-y50-review-image4-vnGZ3qtRKT.jpg"));
+        //creating an admin
+        userDaoStore.addUser("admin", "admin", "admin@email.com", Role.ADMIN);
     }
 }
