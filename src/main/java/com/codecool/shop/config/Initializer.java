@@ -50,8 +50,8 @@ public class Initializer implements ServletContextListener {
         productDataStore.add(new Product("MacBook Noob",new BigDecimal("1200"),"USD","test description",laptop,amazon,"https://lcdn.altex.ro/resize/media/catalog/product/M/a/2bd48d28d1c32adea0e55139a4e6434a/MacBook_Pro_13in_Silver-1.jpg"));
         productDataStore.add(new Product("TEST",new BigDecimal("1000"),"USD","test description",laptop,amazon,"/static/img/test.jpeg"));
         productDataStore.add(new Product("Phone1",new BigDecimal("1000"),"USD","Smarphone",smartphone,apple,"/static/img/1.jpeg"));
-        productDataStore.add(new Product("Phone2",new BigDecimal("1001"),"USD","Smarphone praf al lui Dragos",smartphone,apple,"/static/img/2.jpeg"));
-        productDataStore.add(new Product("Phone3",new BigDecimal("1002"),"USD","Smarphone praf al lui Dragos",smartphone,apple,"/static/img/3.png"));
+        productDataStore.add(new Product("Phone2",new BigDecimal("1001"),"USD","Smarphone",smartphone,apple,"/static/img/2.jpeg"));
+        productDataStore.add(new Product("Phone3",new BigDecimal("1002"),"USD","Smarphone",smartphone,apple,"/static/img/3.png"));
         //creating an admin
         userDaoStore.addUser("admin", "admin", "admin@email.com", Role.ADMIN);
     }
