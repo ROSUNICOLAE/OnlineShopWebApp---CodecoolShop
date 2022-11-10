@@ -1,7 +1,22 @@
+.navbar-expand-lg{
+    margin: -20px 0px 30px 0px;
+}
 #style {
     background-color: red;
-    padding-bottom: 2px;
-    margin-bottom: 2px;
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#shop {
+    font-size:20px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+.font {
+    font-family: Baskerville;
+}
+#cart{
+    margin-left: 600px;
 }
 
 :root {
@@ -417,8 +432,8 @@ textarea {
 /*Footer */
 
 .footer {
-    margin-top: 2rem;
+    margin-top: 10px;
     text-align: center;
-    background: rgba(0, 0, 0, .03);
+    background: red;
     padding: 2rem 0;
 }

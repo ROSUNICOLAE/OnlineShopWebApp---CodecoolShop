@@ -8,13 +8,14 @@
 
 
 <body>
+<nav class="navbar navbar-expand-lg">
 
+<!--<nav th:replace="header.html :: navigation"></nav>-->
 
-<nav th:replace="header.html :: navigation"></nav>
-
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">All Products</a>
+<!--<nav class="navbar navbar-expand-lg bg-light">-->
+    <div class="container-fluid" id="style">
+        <div id="shop" class="font">CODECOOL SHOP</div>
+        <a class="navbar-brand font" href="#">Products</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,9 +39,13 @@
                         </option>
                     </select>
             </ul>
+            <ul id="cart">
+                <li class="cart-icon"><a href="/cart"><i class="fas fa-shopping-cart"></i><span id="cartItems"></span></a></li>
+            </ul>
         </div>
     </div>
 </nav>
+
 
 <!--<div class="container">-->
 <!--    <div class="card d-flex justify-content-between flex-row">-->

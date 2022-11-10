@@ -1,2 +1,2 @@
-Nov 09, 2022 11:01:16 AM com.codecool.shop.utils.LoggerService log
-INFO: "Order ID: e235fda0-7f46-4811-8023-b5a4cea1e357""Status: false"{"id: 1, name: Amazon Fire, defaultPrice: 49.900000, defaultCurrency: USD, productCategory: Tablet, supplier: Amazon":1}{"Email":"test@test","Address":"test 123","Phone":"1234567","First Name":"test","Last Name":"test"}
+Nov 11, 2022 12:58:47 AM com.codecool.shop.utils.LoggerService log
+INFO: "Order ID: f80ee08d-f57f-4ff0-a38a-ce60d79c2acc""Status: false"{"id: 1, name: Amazon Fire, defaultPrice: 49.900000, defaultCurrency: EUR, productCategory: Tablet, supplier: Amazon":1}{"Email":"a@ro.ro","Address":"q","Phone":"3","First Name":"aa","Last Name":"bb"}
