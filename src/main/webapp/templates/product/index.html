@@ -42,25 +42,6 @@
     </div>
 </nav>
 
-
-<!--<div class="container">-->
-<!--    <div class="card d-flex justify-content-between flex-row">-->
-<!--        <select name="categories" id="categories">-->
-<!--            <option th:each="category : ${categories}"-->
-<!--                    th:text="${category.name}"-->
-<!--                    th:value="${category.id}"-->
-<!--                    th:data-category="${category.id}">-->
-<!--            </option>-->
-<!--        </select>-->
-<!--        <select name="suppliers" id="suppliers">-->
-<!--            <option th:each="supplier : ${suppliers}"-->
-<!--                    th:text="${supplier.name}"-->
-<!--                    th:value="${supplier.id}"-->
-<!--                    th:data-supplier="${supplier.id}">-->
-<!--            </option>-->
-<!--        </select>-->
-<!--    </div>-->
-
     <div id="products" class="container index-items-container">
         <div th:each="prod,iterStat : ${products}">
             <div class="card">
@@ -74,10 +55,10 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="card-text card-price">
-                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
-                    </div>
-                    <a th:data-id="${prod.getId()}" class="btn btn-add add">Add to cart</a>
+                    <div class="card-text card-price child">
+                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p></div>
+
+                   <div class="child"> <a th:data-id="${prod.getId()}" class="btn btn-add add add-to-cart">Add to cart</a></div>
                 </div>
             </div>
         </div>

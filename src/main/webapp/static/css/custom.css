@@ -340,7 +340,17 @@ form {
     padding: 1rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-
+.add-to-cart{
+background:red;
+}
+#add-to-cart{
+    background:red;
+}
+.child {
+    display: inline-block;
+    padding: 0.5rem 0.5rem;
+    vertical-align: middle;
+}
 
 .price ul {
     max-height: 70%;
