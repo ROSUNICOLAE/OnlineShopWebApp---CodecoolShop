@@ -1,3 +1,9 @@
+#style {
+    background-color: red;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+}
+
 :root {
     --primary-color: #198754;
 }
