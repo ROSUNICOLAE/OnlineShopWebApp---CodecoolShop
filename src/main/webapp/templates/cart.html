@@ -9,7 +9,13 @@
 <body>
 
 
-<nav th:replace="header.html :: navigation"></nav>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid" id="style">
+        <div id="shop" class="font">CODECOOL SHOP</div>
+        <ul id="cart">
+            <li class="cart-icon"><a href="/cart"><i class="fas fa-shopping-cart"></i><span id="cartItems"></span></a></li>
+        </ul>
+</nav>
 
 <div class="container cart-container">
     <div id="products" class="cart-items-container">

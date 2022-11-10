@@ -5,10 +5,12 @@
   <script type="module" src="/static/js/checkout-form.js" defer></script>
 </head>
 <body>
-<nav th:replace="header.html :: navigation"></nav>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid" id="style">
+    <div id="shop" class="font">CODECOOL SHOP</div>
+</nav>
 
 <div class="container form-page">
-
   <div class="form-wrapper">
     <form action="/order/api" method="GET">
       <div class="form-group">
@@ -36,11 +38,6 @@
         <textarea required name="address" id="address"></textarea>
       </div>
       <button class="btn btn-add" type="submit">Go To Payment</button>
-      <p>
-        By clicking the button  you agree to our
-        <a href="#">Terms</a> and
-        <a href="#">Conditions</a>
-      </p>
     </form>
   </div>
   <div class="price">
