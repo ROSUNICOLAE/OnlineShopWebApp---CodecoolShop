@@ -1,2 +1,2 @@
-Nov 11, 2022 12:58:47 AM com.codecool.shop.utils.LoggerService log
-INFO: "Order ID: f80ee08d-f57f-4ff0-a38a-ce60d79c2acc""Status: false"{"id: 1, name: Amazon Fire, defaultPrice: 49.900000, defaultCurrency: EUR, productCategory: Tablet, supplier: Amazon":1}{"Email":"a@ro.ro","Address":"q","Phone":"3","First Name":"aa","Last Name":"bb"}
+Nov 11, 2022 10:49:45 AM com.codecool.shop.utils.LoggerService log
+INFO: "Order ID: 2a00739e-684e-43fb-b33a-48944078e863""Status: false"{"id: 3, name: Amazon Fire HD 8, defaultPrice: 89.000000, defaultCurrency: USD, productCategory: Tablet, supplier: Amazon":4}{"Email":"904756@gmail.com","Address":"bd. unirii","Phone":"0729189089","First Name":"ana","Last Name":"b"}

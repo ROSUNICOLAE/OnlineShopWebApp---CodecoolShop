@@ -18,7 +18,12 @@
 #cart{
     margin-left: 600px;
 }
-
+#payment{
+    margin-left: 300px;
+    margin-top: 200px;
+    margin-right: 300px;
+    /*border: 2px solid red;*/
+}
 :root {
     --primary-color: #198754;
 }
@@ -241,6 +246,9 @@ form {
 .continue{
     margin-right: 50px;
     margin-left: 20px;
+    background-color: red;
+}
+.card-payment{
     background-color: red;
 }
 

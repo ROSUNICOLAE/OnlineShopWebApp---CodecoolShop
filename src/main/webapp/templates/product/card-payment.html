@@ -6,43 +6,43 @@
   <script type="module" src="/static/js/card-payment.js" defer></script>
 </head>
 <body>
-<nav th:replace="header.html :: navigation"></nav>
-<div class="container">
+<div>
+<!--<div class="container">-->
 
-  <div class="card-container">
+<!--  <div class="card-container">-->
 
-    <div class="front">
-      <div class="image">
-        <img src="/static/img/chip.png" alt="">
-        <img src="/static/img/visa.png" alt="">
-      </div>
-      <div class="card-number-box">################</div>
-      <div class="flexbox">
-        <div class="box">
-          <span>card holder</span>
-          <div class="card-holder-name">full name</div>
-        </div>
-        <div class="box">
-          <span>expires</span>
-          <div class="expiration">
-            <span class="exp-month">mm</span>
-            <span class="exp-year">yy</span>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    <div class="front">-->
+<!--      <div class="image">-->
+<!--        <img src="/static/img/chip.png" alt="">-->
+<!--        <img src="/static/img/visa.png" alt="">-->
+<!--      </div>-->
+<!--      <div class="card-number-box">################</div>-->
+<!--      <div class="flexbox">-->
+<!--        <div class="box">-->
+<!--          <span>card holder</span>-->
+<!--          <div class="card-holder-name">full name</div>-->
+<!--        </div>-->
+<!--        <div class="box">-->
+<!--          <span>expires</span>-->
+<!--          <div class="expiration">-->
+<!--            <span class="exp-month">mm</span>-->
+<!--            <span class="exp-year">yy</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <div class="back">
-      <div class="stripe"></div>
-      <div class="box">
-        <span>cvv</span>
-        <div class="cvv-box"></div>
-        <img src="image/visa.png" alt="">
-      </div>
-    </div>
+<!--    <div class="back">-->
+<!--      <div class="stripe"></div>-->
+<!--      <div class="box">-->
+<!--        <span>cvv</span>-->
+<!--        <div class="cvv-box"></div>-->
+<!--        <img src="image/visa.png" alt="">-->
+<!--      </div>-->
+<!--    </div>-->
 
-  </div>
-
+<!--  </div>-->
+<div id="payment">
   <form action="/order/api" method="POST">
     <div class="inputBox">
       <span>card number</span>
@@ -92,11 +92,11 @@
         <input required leng type="text" maxlength="4" class="cvv-input">
       </div>
     </div>
-    <input type="submit" value="submit" class="add-to-cart submit-btn">
+    <input type="submit" value="submit" class="add-to-cart submit-btn" id="card-payment">
   </form>
 
 </div>
 
-<div th:replace="footer.html :: copy"></div>
+<!--<div th:replace="footer.html :: copy"></div>-->
 </body>
 </html>
