@@ -10,10 +10,12 @@ export const productCard = (product) => {
                     <p class="card-text card-description">${product.description}</p>
                 </div>
                 <div class="card-body">
-                    <div class="card-text card-price">
+                    <div class="card-text card-price child">
                         <p class="lead"> ${product.price}</p>
                     </div>
-                    <a data-id="${product.id}" class="btn btn-add add">Add to cart</a>
+                    <div class="child">
+                    <a data-id="${product.id}" class="btn btn-add add" id="add-to-cart">Add to cart</a>
+                    </div>
                 </div>
             </div>`
 }
