@@ -45,7 +45,7 @@
     <div id="products" class="container index-items-container">
         <div th:each="prod,iterStat : ${products}">
             <div class="card">
-                <div class="product-img-holder">
+<!--                <div class="product-img-holder">-->
                     <img class="product-img" th:src="${prod.img}" alt=""/>
                 </div>
 
@@ -55,12 +55,12 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="card-text card-price child">
-                        <p class="lead" th:text="${prod.getPrice()}">100 USD</p></div>
+                    <div class="card-text card-price child price">
+                        <div class="lead child" th:text="${prod.getPrice()}">100 USD</div></div>
 
                    <div class="child"> <a th:data-id="${prod.getId()}" class="btn btn-add add" id="add-to-cart">Add to cart</a></div>
                 </div>
-            </div>
+<!--            </div>-->
         </div>
     </div>
 
