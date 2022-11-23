@@ -2,8 +2,8 @@ package com.codecool.shop.service;
 
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.OrderDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.codecool.shop.dao.implementation.OrderDaoMem;
+import com.codecool.shop.dao.implementationMem.CartDaoMem;
+import com.codecool.shop.dao.implementationMem.OrderDaoMem;
 import com.codecool.shop.model.Order;
 
 import java.util.Map;

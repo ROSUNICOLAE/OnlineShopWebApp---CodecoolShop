@@ -1,4 +1,4 @@
-package com.codecool.shop.dao.implementation;
+package com.codecool.shop.dao.implementationMem;
 
 
 import com.codecool.shop.dao.ProductCategoryDao;
@@ -6,6 +6,7 @@ import com.codecool.shop.model.ProductCategory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ProductCategoryDaoMem implements ProductCategoryDao {
 
@@ -38,6 +39,16 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
     @Override
     public void remove(int id) {
         data.remove(find(id));
+    }
+
+    @Override
+    public ProductCategory find(UUID id) {
+        return null;
+    }
+
+    @Override
+    public void remove(UUID id) {
+
     }
 
     @Override
