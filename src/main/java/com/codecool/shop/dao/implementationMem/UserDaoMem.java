@@ -25,7 +25,7 @@ public class UserDaoMem implements UserDao {
     }
 
     @Override
-    public User addUser(String name, String password, String email, Role role) {
+    public User addUser(String name, String password, String email, Role role, UUID userId) {
         User user = new User();
         user.setName(name);
         user.setEmail(email);
@@ -38,7 +38,6 @@ public class UserDaoMem implements UserDao {
 
     @Override
     public void removeUser(UUID id) {
-
     }
 
     @Override
@@ -53,7 +52,7 @@ public class UserDaoMem implements UserDao {
 
     @Override
     public User getUserById(UUID id) {
-        return null;
+        return users.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override

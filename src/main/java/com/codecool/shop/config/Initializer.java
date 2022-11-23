@@ -17,6 +17,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @WebListener
 public class Initializer implements ServletContextListener {
@@ -54,6 +55,6 @@ public class Initializer implements ServletContextListener {
                         "Accident detection calls for help when you can't.",Smartphone,apple,"/static/img/purple.jpg"));
                 productDataStore.add(new Product("iPhone 11, 64GB, Red",new BigDecimal("11187"),"USD","The iPhone 11 has a 6.1-inch IPS LCD with a resolution of 1.4 megapixels. It supports Dolby Vision, HDR10, True-Tone, and a wide color gamut.",Smartphone,apple,"/static/img/red2.jpg"));
                 //creating an admin
-                userDaoStore.addUser("admin", "admin", "admin@email.com", Role.ADMIN);
+                userDaoStore.addUser("admin", "$2a$12$IJD22UF0MSImWbTvd4OMbOsUo8B6SpqcDJ04EzlA.xM7hzoah5bW.", "admin@email.com", Role.ADMIN, UUID.randomUUID());
         }
 }

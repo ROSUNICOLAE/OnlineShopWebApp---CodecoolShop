@@ -2,9 +2,9 @@ package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
 import com.codecool.shop.dao.CartDao;
-import com.codecool.shop.dao.implementationMem.CartDaoMem;
+import com.codecool.shop.dao.OrderDao;
 import com.codecool.shop.model.Order;
-import com.codecool.shop.service.OrderService;
+import com.codecool.shop.service.ApplicationService;
 import com.codecool.shop.utils.LoggerService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -26,13 +26,28 @@ public class OrderControllerApi extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        ApplicationService applicationService = new ApplicationService();
+
+
+            OrderDao orderDao = applicationService.getOrderDao();
+
+
         if (req.getParameter("first-name") != null) {
 
-            CartDao cart= CartDaoMem.getInstance();
-            OrderService orderService = new OrderService();
+
+
+
+            HttpSession session=req.getSession();
+            UUID userId = null;
+            try{
+                userId = UUID.fromString(session.getAttribute("user-id").toString());
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
 
             Map<String, String> clientDetails = new HashMap<>();
-            CartDao clientCart = cart;
+            CartDao cart = applicationService.getCartDao();
 
 
             clientDetails.put("First Name", req.getParameter("first-name"));
@@ -41,33 +56,49 @@ public class OrderControllerApi extends HttpServlet {
             clientDetails.put("Phone", req.getParameter("phone"));
             clientDetails.put("Address", req.getParameter("address"));
 
-            Order order = orderService.addOrder(clientDetails, cart);
+            Order order = orderDao.createOrder(clientDetails, cart, userId);
 
 
             try{
 
-                HttpSession session=req.getSession();
+                session = req.getSession();
                 session.setAttribute("order-id", order.getOrderId());
 
 
-            }catch(Exception e){System.out.println(e);}
+            }catch(Exception e){e.printStackTrace();}
 
 
-            resp.sendRedirect(req.getContextPath() + "/card-payment");
+
+
+            if (session.getAttribute("user-name") != null) {
+                resp.sendRedirect(req.getContextPath() + "/card-payment");
+            } else {
+                resp.sendRedirect(req.getContextPath() + "/login");
+            }
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        ApplicationService applicationService = new ApplicationService();
+
+        OrderDao orderDao = applicationService.getOrderDao();
+
         HttpSession session=req.getSession();
-        UUID orderId = (UUID) session.getAttribute("order-id");
+        UUID orderId = null;
+        try{
+            orderId = UUID.fromString(session.getAttribute("order-id").toString());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         LoggerService l = LoggerService.getInstance();
 
-        OrderService orderService = new OrderService();
 
-        Order currentOrder = orderService.getOrder(orderId);
+//        Order currentOrder = orderService.getOrder(orderId);
 
+        Order currentOrder = orderDao.getOrder(orderId);
         //TODO add to DB, next sprint
         l.log(currentOrder);
         currentOrder.setOrderConfirmed(true);

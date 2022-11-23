@@ -23,8 +23,6 @@ public  class ApplicationService {
 
     public ApplicationService() {
         if (!DatabaseManager.isInMemory()) {
-            //todo CategoryDaoJdbc si restul ca singletone
-            //todo DatabaseManager
             ShopDatabaseManager shopDatabaseManager = new ShopDatabaseManager();
             try {
                 this.dataSource = shopDatabaseManager.connect();

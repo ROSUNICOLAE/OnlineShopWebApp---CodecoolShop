@@ -53,7 +53,8 @@ public class ProductCategoryDaoJdbc implements ProductCategoryDao{
         try (Connection conn = dataSource.getConnection()) {
             String sql = "SELECT * FROM categories;";
             ResultSet rs = conn.createStatement().executeQuery(sql);
-            if (!rs.next()) {
+            // TODO extract Author from result set and return
+            if (!rs.next()) { // first row was not found == no data was returned by the query
                 return null;
             }
             List<ProductCategory> result = new ArrayList<>();

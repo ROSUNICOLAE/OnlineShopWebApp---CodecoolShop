@@ -31,6 +31,7 @@ public class OrderDaoJdbc implements OrderDao {
 
 
     @Override
+    //TODO Il trimit din sesiune
     public Order createOrder(Map<String, String> clientDetails, CartDao cartDao, UUID userId) {
 //        return null;
         UUID cartId = getCartId(userId);
@@ -62,8 +63,12 @@ public class OrderDaoJdbc implements OrderDao {
     public Order getOrder(UUID orderID) {
         try(Connection conn = dataSource.getConnection()){
 
+            //todo trb sa returnez un order, care isi face singur id random, ii fac set de id cu id-ul din
+            // parametru
+
             Map<String, String> clientDetails = new HashMap<>();
 
+//            String sql = "SELECT author_id, title FROM book WHERE id = ?";
             String sql =  "SELECT cart_id, user_id, address, phone_number, first_name, last_name, email FROM client_order WHERE id = ?";
 
             PreparedStatement st = conn.prepareStatement(sql);
@@ -74,6 +79,11 @@ public class OrderDaoJdbc implements OrderDao {
             }
             UUID cartId = (UUID) rs.getObject(1);
 
+            //todo sa bag adresa in clientDetails
+            //todo sa fac un new cart folosind user_id aka rs.getObject(2);
+            //todo ii dau un new cartDao la misto, oricum e gol
+            // ii dau user id
+            // cu toate astea fac un nou order pe care il returnez
             clientDetails.put("First Name", rs.getString(5));
             clientDetails.put("Last Name", rs.getString(6));
             clientDetails.put("Email", rs.getString(7));
@@ -89,7 +99,9 @@ public class OrderDaoJdbc implements OrderDao {
             Order order = new Order(clientDetails, cartDao, cart.getOwnerId());
             order.setOwnerId((UUID) rs.getObject(2));
             order.setOrderId(orderID);
+//            var order = new Order(clientDetails, cartDao, cart.getOwnerId();
 
+//            return new Order(clientDetails, cartDao, cart.getOwnerId());
             return order;
 
         }catch (SQLException e ){

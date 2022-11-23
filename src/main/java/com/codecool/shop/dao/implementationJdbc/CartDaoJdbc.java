@@ -168,7 +168,9 @@ public class CartDaoJdbc implements CartDao {
 
     @Override
     public Map<Product, Integer> getCart(UUID userId) {
+        // aka getAll
         try(Connection conn = dataSource.getConnection()){
+//            String sql = "SELECT cart_items.quantity, products.name, products.description, products.price, suppliers.name, suppliers.description, category.name, category.description FROM cart WHERE ownerid = ?";
             String sql = "SELECT\n" +
                     "       ci.quantity products_quantity,\n" +
                     "       p.id," +

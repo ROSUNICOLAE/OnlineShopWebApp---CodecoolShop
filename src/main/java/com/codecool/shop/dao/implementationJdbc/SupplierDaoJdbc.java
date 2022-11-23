@@ -51,7 +51,8 @@ public class SupplierDaoJdbc implements SupplierDao {
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, id.toString());
             ResultSet rs = st.executeQuery();
-            if (!rs.next()) {
+            // TODO extract Author from result set and return
+            if (!rs.next()) { // first row was not found == no data was returned by the query
                 return null;
             }
 
@@ -80,7 +81,8 @@ public class SupplierDaoJdbc implements SupplierDao {
         try (Connection conn = dataSource.getConnection()) {
             String sql = "SELECT * FROM suppliers;";
             ResultSet rs = conn.createStatement().executeQuery(sql);
-            if (!rs.next()) {
+            // TODO extract Author from result set and return
+            if (!rs.next()) { // first row was not found == no data was returned by the query
                 return null;
             }
             List<Supplier> result = new ArrayList<>();

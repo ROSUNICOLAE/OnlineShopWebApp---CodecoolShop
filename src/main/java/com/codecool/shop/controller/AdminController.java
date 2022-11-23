@@ -1,8 +1,7 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
-import com.codecool.shop.dao.CartDao;
-import com.codecool.shop.model.Product;
+import com.codecool.shop.dao.UserDao;
 import com.codecool.shop.model.Role;
 import com.codecool.shop.model.User;
 import com.codecool.shop.service.ApplicationService;
@@ -16,28 +15,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.Map;
 import java.util.UUID;
 
-@WebServlet(urlPatterns = {"/cart"})
-public class CartController extends HttpServlet {
+@WebServlet(urlPatterns = {"/admin"})
+public class AdminController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ApplicationService service = new ApplicationService();
-        CartDao cart = service.getCartDao();
-        ApplicationService applicationService = new ApplicationService();
-
-        CartDao cartDao =  applicationService.getCartDao();
-
-
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
 
-        BigDecimal totalPrice = BigDecimal.ZERO;
+        HttpSession session = req.getSession();
 
-        HttpSession session=req.getSession();
+        ApplicationService applicationService = new ApplicationService();
+        UserDao userDao = applicationService.getUserDao();
 
         User visitor = null;
         UUID userId = (UUID) session.getAttribute("user-id");
@@ -57,17 +48,21 @@ public class CartController extends HttpServlet {
 
         boolean isRegistered = visitor.getName() != null;
         boolean isAdmin = visitor.getRole() == Role.ADMIN;
-        Map<Product, Integer> customerCart = cart.getCart(userId);
 
-        for (Map.Entry<Product, Integer> entry : cartDao.getCart(userId).entrySet()) {
-            totalPrice = totalPrice.add(entry.getKey().getDefaultPrice().multiply(BigDecimal.valueOf(entry.getValue())));
+        User user =  userDao.getUserById(userId);
+
+        if (user.getRole() == Role.ADMIN) {
+            engine.process("/product/admin.html", context, resp.getWriter());
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/");
         }
-
         context.setVariable("isRegistered", isRegistered);
         context.setVariable("isAdmin", isAdmin);
-        context.setVariable("cart", cartDao.getCart(userId));
-        context.setVariable("totalPrice", totalPrice.toString());
-        engine.process("/cart.html", context, resp.getWriter());
+
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
 }

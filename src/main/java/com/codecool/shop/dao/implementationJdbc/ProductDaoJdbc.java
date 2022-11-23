@@ -41,6 +41,7 @@ public class ProductDaoJdbc implements ProductDao{
     @Override
     public Product find(UUID id) {
         try(Connection conn = dataSource.getConnection()){
+//            String sql = "SELECT id, name, description, price, supplier_id, category_id FROM products WHERE id = ?";
             String sql = "SELECT products.id, products.name, " +
                     "   products.description, " +
                     "   price, products.supplier_id, " +

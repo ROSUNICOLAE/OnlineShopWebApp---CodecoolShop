@@ -46,6 +46,8 @@ public class UserDaoJdbc implements UserDao {
             userId = UUID.randomUUID();
         }
         try (Connection conn = dataSource.getConnection()) {
+
+
             UUID tempId = isIdAlreadyInDb(userId);
             if (tempId != null) {
                 User createdUser = updateUser(userId, name, password, email, role);
@@ -82,7 +84,6 @@ public class UserDaoJdbc implements UserDao {
 
     }
 
-
     private User updateUser(UUID userId, String name, String password, String email, Role role) {
         if (name != null) {
             try (Connection conn = dataSource.getConnection()) {
@@ -108,7 +109,6 @@ public class UserDaoJdbc implements UserDao {
         }
 
     }
-
 
     private UUID isIdAlreadyInDb(UUID userId) {
         try (Connection conn = dataSource.getConnection()) {
