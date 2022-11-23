@@ -44,9 +44,6 @@ public class ProductCategoryDaoMem implements ProductCategoryDao {
     public List<ProductCategory> getAll() {
         return data;
     }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> a500a30b58a751720bdc3a9ea09a5a927a236498
 }
