@@ -168,7 +168,7 @@ public class UserDaoJdbc implements UserDao {
     @Override
     public User getUserById(UUID id) {
         try (Connection conn = dataSource.getConnection()) {
-            String sqlUser = "SELECT * FROM users WHERE id = ?";
+            String sqlUser = "SELECT * FROM \"users\" WHERE id = ?";
             PreparedStatement st = conn.prepareStatement(sqlUser);
             st.setObject(1, id);
             ResultSet rs = st.executeQuery();

@@ -27,7 +27,7 @@ public class ShopDatabaseManager{
 //        return dataSource;
 //    }
     public enum ServerInfo {
-        DB("dungen_crawl"),
+        DB("cc_shop"),
         HOST("109.97.198.35"),
 
         PORT("5432"),
@@ -43,7 +43,7 @@ public class ShopDatabaseManager{
         }
     }
 
-    static final String URL = "jdbc:postgresql://109.97.198.35:5432/dungeon_crawl";
+    static final String URL = "jdbc:postgresql://109.97.198.35:5432/cc_shop";
     public DataSource connect() throws SQLException {
 
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
