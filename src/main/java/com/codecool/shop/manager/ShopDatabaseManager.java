@@ -1,31 +1,12 @@
 package com.codecool.shop.manager;
 
-import com.codecool.shop.dao.*;
 import org.postgresql.ds.PGSimpleDataSource;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
 public class ShopDatabaseManager{
-    UserDao userDao;
-    ProductDao productDao;
-    SupplierDao supplierDao;
-    ProductCategoryDao productCategoryDao;
-    OrderDao orderDao;
-    CartDao cartDao;
 
-
-//    public DataSource connect() throws SQLException {
-//        PGSimpleDataSource dataSource = new PGSimpleDataSource();
-//        ApplicationProperties properties = new ApplicationProperties();
-//        dataSource.setDatabaseName(properties.readProperty("cc_shop"));
-//        dataSource.setUser(properties.readProperty("postgres"));
-//        dataSource.setPassword(properties.readProperty("admin"));
-//        System.out.println("Tying to connect");
-//        dataSource.getConnection().close();
-//        System.out.println("Connection ok!");
-//        return dataSource;
-//    }
     public enum ServerInfo {
         DB("cc_shop"),
         HOST("109.97.198.35"),

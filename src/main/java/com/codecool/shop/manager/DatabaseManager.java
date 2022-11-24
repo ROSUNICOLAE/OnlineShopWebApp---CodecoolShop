@@ -1,7 +1,7 @@
 package com.codecool.shop.manager;
 
 public class DatabaseManager {
-//    class decides if products are saved in
+
     private static Boolean instance = null;
 
     private DatabaseManager(){}

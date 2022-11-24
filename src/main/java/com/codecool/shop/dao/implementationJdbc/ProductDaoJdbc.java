@@ -41,7 +41,6 @@ public class ProductDaoJdbc implements ProductDao{
     @Override
     public Product find(UUID id) {
         try(Connection conn = dataSource.getConnection()){
-//            String sql = "SELECT id, name, description, price, supplier_id, category_id FROM products WHERE id = ?";
             String sql = "SELECT products.id, products.name, " +
                     "   products.description, " +
                     "   price, products.supplier_id, " +
@@ -61,7 +60,6 @@ public class ProductDaoJdbc implements ProductDao{
             if (!rs.next()){
                 return null;
             }
-
             ProductCategory pc = new ProductCategory(rs.getString(7),"", rs.getString(8));
             pc.setId(UUID.fromString(rs.getString(6)));
             Supplier s = new Supplier(rs.getString(9));
@@ -69,7 +67,6 @@ public class ProductDaoJdbc implements ProductDao{
             Product p = new Product(rs.getString(2),rs.getBigDecimal(4),"USD", rs.getString(3), pc, s, "img");
             p.setId(UUID.fromString(rs.getString(1)));
             p.setDescription(rs.getString(3));
-
             return p;
 
         }catch (SQLException e ){
@@ -89,7 +86,6 @@ public class ProductDaoJdbc implements ProductDao{
 
     @Override
     public List<Product> getAll() {
-
         try (Connection conn = dataSource.getConnection()) {
             String sql = "SELECT products.id, products.name, " +
                     "   products.description, " +
@@ -105,9 +101,6 @@ public class ProductDaoJdbc implements ProductDao{
                     "JOIN suppliers s ON products.supplier_id = s.id; ";
             ResultSet rs = conn.createStatement().executeQuery(sql);
 
-//            if (!rs.next()) {
-//                return null;
-//            }
             List<Product> result = new ArrayList<>();
 
             while(rs.next()){

@@ -20,20 +20,7 @@ public class DbSwitchApi extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        if(DatabaseManager.isInMemory()){
-//            DatabaseManager.switchBetweenDb_InMem();
-//            resp.sendRedirect(req.getContextPath() + "/");
-//            return;
-//        }
 
-//        ObjectMapper objectMapper= new ObjectMapper();
-
-//        StringBuffer buffer = new StringBuffer();
-//        BufferedReader reader = req.getReader();
-//        String line;
-//        while ((line = reader.readLine()) != null) {
-//            buffer.append(line);
-//        }
 
         ApplicationService applicationService = new ApplicationService();
 
@@ -53,7 +40,7 @@ public class DbSwitchApi extends HttpServlet{
         if (user != null && user.getRole() == Role.ADMIN){
             DatabaseManager.switchBetweenDb_InMem();
             session.invalidate();
-//            userDao.addUser("ROBERT999", "robert2", "robert@robert.com", Role.ADMIN, UUID.randomUUID());
+
         }
 
         resp.sendRedirect(req.getContextPath() + "/");
