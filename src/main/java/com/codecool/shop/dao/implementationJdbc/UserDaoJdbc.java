@@ -110,6 +110,10 @@ public class UserDaoJdbc implements UserDao {
 
     }
 
+    public UserDaoJdbc(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     private UUID isIdAlreadyInDb(UUID userId) {
         try (Connection conn = dataSource.getConnection()) {
             String sql = "SELECT id FROM users WHERE id = ?";

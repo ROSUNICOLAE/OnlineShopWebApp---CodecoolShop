@@ -51,12 +51,12 @@ public class ProductCategoryDaoJdbc implements ProductCategoryDao{
     @Override
     public List<ProductCategory> getAll() {
         try (Connection conn = dataSource.getConnection()) {
-            String sql = "SELECT * FROM categories;";
+            String sql = "SELECT * FROM categories";
             ResultSet rs = conn.createStatement().executeQuery(sql);
-            // TODO extract Author from result set and return
-            if (!rs.next()) { // first row was not found == no data was returned by the query
-                return null;
-            }
+//
+//            if (!rs.next()) { // first row was not found == no data was returned by the query
+//                return null;
+//            }
             List<ProductCategory> result = new ArrayList<>();
 
             while(rs.next()){
@@ -70,6 +70,5 @@ public class ProductCategoryDaoJdbc implements ProductCategoryDao{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

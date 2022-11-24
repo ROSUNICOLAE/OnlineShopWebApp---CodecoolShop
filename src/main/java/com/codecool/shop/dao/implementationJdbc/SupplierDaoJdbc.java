@@ -79,12 +79,11 @@ public class SupplierDaoJdbc implements SupplierDao {
     @Override
     public List<Supplier> getAll() {
         try (Connection conn = dataSource.getConnection()) {
-            String sql = "SELECT * FROM suppliers;";
+            String sql = "SELECT * FROM suppliers";
             ResultSet rs = conn.createStatement().executeQuery(sql);
-            // TODO extract Author from result set and return
-            if (!rs.next()) { // first row was not found == no data was returned by the query
-                return null;
-            }
+//            if (!rs.next()) {
+//                return null;
+//            }
             List<Supplier> result = new ArrayList<>();
 
             while(rs.next()){

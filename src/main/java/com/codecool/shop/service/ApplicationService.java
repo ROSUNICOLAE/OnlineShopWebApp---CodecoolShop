@@ -2,8 +2,6 @@ package com.codecool.shop.service;
 
 import com.codecool.shop.dao.*;
 import com.codecool.shop.dao.implementationJdbc.*;
-import com.codecool.shop.dao.implementationMem.*;
-import com.codecool.shop.manager.DatabaseManager;
 import com.codecool.shop.manager.ShopDatabaseManager;
 
 import javax.sql.DataSource;
@@ -22,14 +20,12 @@ public  class ApplicationService {
 
 
     public ApplicationService() {
-        if (!DatabaseManager.isInMemory()) {
             ShopDatabaseManager shopDatabaseManager = new ShopDatabaseManager();
             try {
                 this.dataSource = shopDatabaseManager.connect();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
             cartDao = CartDaoJdbc.getInstance();
             productCategoryDao = ProductCategoryDaoJdbc.getInstance();
             productDao = ProductDaoJdbc.getInstance();
@@ -43,24 +39,8 @@ public  class ApplicationService {
             ((SupplierDaoJdbc) supplierDao).establishConnection(dataSource);
             ((ProductCategoryDaoJdbc) productCategoryDao).establishConnection(dataSource);
             ((UserDaoJdbc)userDao).establishConnection(dataSource);
-
-
         }
-        else if (DatabaseManager.isInMemory()) {
 
-            cartDao = CartDaoMem.getInstance();
-            orderDao = OrderDaoMem.getInstance();
-            productCategoryDao = ProductCategoryDaoMem.getInstance();
-            productDao = ProductDaoMem.getInstance();
-            supplierDao = SupplierDaoMem.getInstance();
-            userDao = UserDaoMem.getInstance();
-        }
-    }
-
-    private void establishConnection() {
-        ((CartDaoJdbc)cartDao).establishConnection(dataSource);
-        ((OrderDaoJdbc)orderDao).establishConnection(dataSource);
-    }
 
 
     public CartDao getCartDao() {
