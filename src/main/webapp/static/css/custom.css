@@ -1,3 +1,26 @@
+.register {
+    margin-left: 500px;
+    margin-right: 0px
+}
+#cart{
+    margin-left: 0px;
+}
+.log{
+    margin-left:10px;
+}
+/*.lon{*/
+/*    text-decoration: none;*/
+/*}*/
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
 .navbar-expand-lg{
     margin: -20px 0px 30px 0px;
 }
@@ -15,9 +38,7 @@
 .font {
     font-family: Baskerville;
 }
-#cart{
-    margin-left: 600px;
-}
+
 #payment{
     margin-left: 300px;
     margin-top: 200px;
